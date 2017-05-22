@@ -33,6 +33,26 @@ public class Controller {
 
 	}
 
+	private void setResultC(double tempC){
+		resultC.setText(new DecimalFormat("##.##").format((tempC)));
+	}
+
+	private void setResultK(double tempK){
+		resultK.setText(new DecimalFormat("##.##").format((tempK)));
+	}
+
+	private void setResultF(double tempF){
+		resultF.setText(new DecimalFormat("##.##").format((tempF)));
+	}
+
+	private void setResultsForBadInput(){
+		resultC.setText(BADVALUE);
+		resultK.setText(BADVALUE);
+		resultF.setText(BADVALUE);
+	}
+
+
+
 	@FXML
 	private void calculateTemperature(ActionEvent event){
 
@@ -101,13 +121,11 @@ public class Controller {
 
 			/* ustawienie wyników*/
 			if(alert.getText()!=""){
-				resultC.setText(BADVALUE);
-				resultK.setText(BADVALUE);
-				resultF.setText(BADVALUE);
+				setResultsForBadInput();
 			} else{
-				resultC.setText(new DecimalFormat("##.##").format((tempC)));
-				resultK.setText(new DecimalFormat("##.##").format((tempK)));
-				resultF.setText(new DecimalFormat("##.##").format((tempF)));
+				setResultC(tempC);
+				setResultF(tempF);
+				setResultK(tempK);
 			}
 
 	}
@@ -137,4 +155,9 @@ public class Controller {
 	private double convertFahrenheitToKelvin(double fahrenheitTemperature){
 		return convertFahrenheitToCelsjus(fahrenheitTemperature) + DIFFERENCE_BEETWEEN_CELSJUS_AND_KELVIN;
 	}
+
+	private String getTemperatureUnit(){
+		return tempUnit.getValue();
+	}
+
 }
