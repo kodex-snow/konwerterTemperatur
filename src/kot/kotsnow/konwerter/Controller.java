@@ -51,6 +51,15 @@ public class Controller {
 		resultF.setText(BADVALUE);
 	}
 
+	private void getTemperatureToConvert(){
+		try{
+			double tempToConvert = Double.parseDouble(tempValue.getText().replace(',', '.'));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+	}
+
 
 
 	@FXML
@@ -128,32 +137,6 @@ public class Controller {
 				setResultK(tempK);
 			}
 
-	}
-
-	private double convertCelsjusToKelvin(double celsjusTemperature){
-		return celsjusTemperature +DIFFERENCE_BEETWEEN_CELSJUS_AND_KELVIN;
-
-	}
-
-	private double convertCelsjusToFahrenheit(double celsjusTemperature){
-		return (9.0/5.0)*celsjusTemperature + 32;
-	}
-
-	private double convertKelvinToCelsjus(double kelvinTemperature){
-		return kelvinTemperature-DIFFERENCE_BEETWEEN_CELSJUS_AND_KELVIN;
-
-	}
-
-	private double convertKelvinToFahrenheit(double kelvinTemperature){
-		return (9.0/5.0)*(convertKelvinToCelsjus(kelvinTemperature)) + 32;
-	}
-
-	private double convertFahrenheitToCelsjus(double fahrenheitTemperature){
-		return (fahrenheitTemperature-32)*(5.0/9.0);
-	}
-
-	private double convertFahrenheitToKelvin(double fahrenheitTemperature){
-		return convertFahrenheitToCelsjus(fahrenheitTemperature) + DIFFERENCE_BEETWEEN_CELSJUS_AND_KELVIN;
 	}
 
 	private String getTemperatureUnit(){
