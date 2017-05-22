@@ -8,7 +8,7 @@ import javafx.scene.text.Text;
 import java.lang.Double;
 import java.text.DecimalFormat;
 
-public class Controller {
+public class Controller implements Deegrees {
 
 	@FXML
 	private TextField tempValue;
@@ -25,7 +25,6 @@ public class Controller {
 	private Text alert;
 
 
-	private final String DEGREE = "\u00b0";
 	private final String BADVALUE = "---";
 	private final double DIFFERENCE_BEETWEEN_CELSJUS_AND_KELVIN = 273.15;
 
@@ -81,7 +80,7 @@ public class Controller {
 				/*Obliczanie*/
 
 				/*Celsjusze*/
-				if(tempUnit.getValue().equals(DEGREE+"C")){
+				if(tempUnit.getValue().equals(CELSJUS_DEEGREE)){
 					if(tempToConvert>=-273.15){
 
 						tempC = tempToConvert;
@@ -94,7 +93,7 @@ public class Controller {
 				}
 
 				/* Kelviny*/
-				else if(tempUnit.getValue().equals("K")){
+				else if(tempUnit.getValue().equals(KELVIN_DEEGREE)){
 					if(tempToConvert>=0){
 
 						tempK=tempToConvert;
