@@ -26,8 +26,8 @@ public class Controller {
 
 
 	private final String DEGREE = "\u00b0";
-	final String BADVALUE = "---";
-	final double KELVINDIFF = 273.15;
+	private final String BADVALUE = "---";
+	private final double DIFFERENCE_BEETWEEN_CELSJUS_AND_KELVIN = 273.15;
 
 	public Controller() {
 
@@ -56,7 +56,7 @@ public class Controller {
 					if(tempToConvert>=-273.15){
 
 						tempC = tempToConvert;
-						tempK = tempC+KELVINDIFF;
+						tempK = tempC+DIFFERENCE_BEETWEEN_CELSJUS_AND_KELVIN;
 						tempF = (9.0/5.0)*tempC + 32 ;
 
 					} else{
@@ -69,9 +69,9 @@ public class Controller {
 					if(tempToConvert>=0){
 
 						tempK=tempToConvert;
-						tempC = tempK-KELVINDIFF;
-						tempK = tempC + KELVINDIFF;
-						tempF = (9.0/5.0)*tempC + 32 - -273.15;
+						tempC = tempK-DIFFERENCE_BEETWEEN_CELSJUS_AND_KELVIN;
+						tempK = tempC + DIFFERENCE_BEETWEEN_CELSJUS_AND_KELVIN;
+						tempF = (9.0/5.0)*tempC + 32 -273.15;
 
 
 					} else{
@@ -86,7 +86,7 @@ public class Controller {
 
 						tempF=tempToConvert;
 						tempC=(tempF-32)*(5.0/9.0);
-						tempK=tempC + KELVINDIFF;
+						tempK=tempC + DIFFERENCE_BEETWEEN_CELSJUS_AND_KELVIN;
 
 					} else{
 						alert.setText("Temperatura nie mo¿e byc ni¿sza ni¿ -459.67"+DEGREE+"F !");
@@ -113,12 +113,28 @@ public class Controller {
 	}
 
 	private double convertCelsjusToKelvin(double celsjusTemperature){
-		return celsjusTemperature +KELVINDIFF;
+		return celsjusTemperature +DIFFERENCE_BEETWEEN_CELSJUS_AND_KELVIN;
 
 	}
 
-	private double convertKelvinToCelsjus(double kelvinTemperature){
-		return kelvinTemperature-KELVINDIFF;
+	private double convertCelsjusToFahrenheit(double celsjusTemperature){
+		return (9.0/5.0)*celsjusTemperature + 32;
+	}
 
+	private double convertKelvinToCelsjus(double kelvinTemperature){
+		return kelvinTemperature-DIFFERENCE_BEETWEEN_CELSJUS_AND_KELVIN;
+
+	}
+
+	private double convertKelvinToFahrenheit(double kelvinTemperature){
+		return (9.0/5.0)*(convertKelvinToCelsjus(kelvinTemperature)) + 32;
+	}
+
+	private double convertFahrenheitToCelsjus(double fahrenheitTemperature){
+		return (fahrenheitTemperature-32)*(5.0/9.0);
+	}
+
+	private double convertFahrenheitToKelvin(double fahrenheitTemperature){
+		return convertFahrenheitToCelsjus(fahrenheitTemperature) + DIFFERENCE_BEETWEEN_CELSJUS_AND_KELVIN;
 	}
 }
