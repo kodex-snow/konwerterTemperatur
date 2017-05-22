@@ -83,15 +83,15 @@ public class Controller {
 				else
 				{
 					if(tempToConvert>=-459.67){
-						
+
 						tempF=tempToConvert;
 						tempC=(tempF-32)*(5.0/9.0);
 						tempK=tempC + KELVINDIFF;
-					
+
 					} else{
 						alert.setText("Temperatura nie mo¿e byc ni¿sza ni¿ -459.67"+DEGREE+"F !");
 					}
-					
+
 
 				}
 
@@ -109,6 +109,16 @@ public class Controller {
 				resultK.setText(new DecimalFormat("##.##").format((tempK)));
 				resultF.setText(new DecimalFormat("##.##").format((tempF)));
 			}
+
+	}
+
+	private double convertCelsjusToKelvin(double celsjusTemperature){
+		return celsjusTemperature +KELVINDIFF;
+
+	}
+
+	private double convertKelvinToCelsjus(double kelvinTemperature){
+		return kelvinTemperature-KELVINDIFF;
 
 	}
 }
